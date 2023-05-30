@@ -1,27 +1,22 @@
 package main
 
-// import "fmt"
+import "fmt"
 var salario float64
 var desconto float64
 var imposto float64
 
-func calImposto(salario, desconto, imposto float64) (float64,error) {
-	if salario == 50000.00 {
-		desconto = salario*0.17
-		imposto = salario - desconto
-		return imposto, nil
+func calImposto(salario float64) (float64) {
+	if salario <= 50000.00 {
+		return 0.0
+		} else if salario <= 150000.00 {
+		return salario * 0.17
+		}
+		return salario * 0.3
 	}
-
-	if salario == 150000.00 {
-		desconto = salario*0.10
-		imposto = salario - desconto
-		return imposto, nil
-	}
-	return error.new(string)
-		// ("Não é possível calcular o imposto sobre o seu salário")
-}
 
 func main ()  {
-	
+fmt.Println("imposto de até R$50.000: ", calImposto(50000))
+fmt.Println("imposto de até R$150.000: ", calImposto(150000))
+fmt.Println("imposto de até R$50.000: ", calImposto(150010))
 }
 
